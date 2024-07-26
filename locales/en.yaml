@@ -1,0 +1,369 @@
+buttons:
+  pureLoginOut: LoginOut
+  pureLogin: Login
+  pureVerifyCode: verification code
+  pureOpenSystemSet: Open System Configs
+  pureReload: Reload
+  pureCloseCurrentTab: Close CurrentTab
+  pureCloseLeftTabs: Close LeftTabs
+  pureCloseRightTabs: Close RightTabs
+  pureCloseOtherTabs: Close OtherTabs
+  pureCloseAllTabs: Close AllTabs
+  pureContentFullScreen: Content FullScreen
+  pureContentExitFullScreen: Content ExitFullScreen
+  pureClickCollapse: Collapse
+  pureClickExpand: Expand
+  pureConfirm: Confirm
+  pureSwitch: Switch
+  pureClose: Close
+  pureBackTop: BackTop
+  pureOpenText: Open
+  pureCloseText: Close
+  pureSearch: search
+  pureAppend: Append
+  pureDerive: Derive
+  pureTotal: total
+  pureTotal2: households
+  uploadTemplate: Upload Template
+  downloadTemplate: Download template
+  uploadFile: Upload File
+  outService: Out of service
+  editMess: EDITOR
+search:
+  pureTotal: Total
+  pureHistory: History
+  pureCollect: Collect
+  pureDragSort: （Drag Sort）
+  pureEmpty: Empty
+  purePlaceholder: Search Menu
+panel:
+  pureSystemSet: System Configs
+  pureCloseSystemSet: Close System Configs
+  pureClearCacheAndToLogin: Clear cache and return to login page
+  pureClearCache: Clear Cache
+  pureOverallStyle: Overall Style
+  pureOverallStyleLight: Light
+  pureOverallStyleLightTip: Set sail freshly and light up the comfortable work interface
+  pureOverallStyleDark: Dark
+  pureOverallStyleDarkTip: Moonlight Overture, indulge in the tranquility and elegance of the night
+  pureOverallStyleSystem: Auto
+  pureOverallStyleSystemTip: Synchronize time, the interface naturally responds to morning and dusk
+  pureThemeColor: Theme Color
+  pureLayoutModel: Layout Model
+  pureVerticalTip: The menu on the left is familiar and friendly
+  pureHorizontalTip: Top menu, concise overview
+  pureMixTip: Mixed menu, flexible
+  pureStretch: Stretch Page
+  pureStretchFixed: Fixed
+  pureStretchFixedTip: Compact pages make it easy to find the information you need
+  pureStretchCustom: Custom
+  pureStretchCustomTip: Minimum 1280, maximum 1600
+  pureTagsStyle: Tags Style
+  pureTagsStyleSmart: Smart
+  pureTagsStyleSmartTip: Smart tags add fun and brilliance
+  pureTagsStyleCard: Card
+  pureTagsStyleCardTip: Card tags for efficient browsing
+  pureTagsStyleChrome: Chrome
+  pureTagsStyleChromeTip: Chrome style is classic and elegant
+  pureInterfaceDisplay: Interface Display
+  pureGreyModel: Grey Model
+  pureWeakModel: Weak Model
+  pureHiddenTags: Hidden Tags
+  pureHiddenFooter: Hidden Footer
+  pureMultiTagsCache: MultiTags Cache
+  usermessage: userinfo
+menus:
+  pureHome: Home
+  pureHomeChild: Recyclable data analysis Center
+  pureHomeChild2: Operation monitoring
+  resourceOperation: Resource operation Data
+  pureLogin: Login
+  pureAbnormal: Abnormal Page
+  pureFourZeroFour: "404"
+  pureFourZeroOne: "403"
+  pureFive: "500"
+  purePermission: Permission Manage
+  purePermissionPage: Page Permission
+  purePermissionButton: Button Permission
+  usermessage: userinfo
+  bulkImport: bulk import user
+  userProfile: bulk amend user
+  collectorManagement: Collector Management
+  collectorEmployeeManagement: Collector Employee Management
+  attendanceList: Attendance List
+  dataReport: Data Report
+  collectionList: Collection List
+  pointManagement: Point Management
+  integralDetail: Summary of points detail
+  userIntegral: User Integral
+  integralConversion: Integral Conversion Statistics
+  integralBatchModification: Integral Batch Modification
+  checkInPointsManagement: Check-in points management
+  gardenPointManagement: Garden Point Management
+  bonusPointsDistribution: Bonus Points Distribution
+  aiRecognition: AI recognition manage
+  garbageIdentificationList: Garbage Identification List
+  faceRecognitionRegistrationList: Face recognition registration list
+  recognitionResultList: Recognition result list
+  captureRecognitionList: Capture recognition list
+status:
+  pureLoad: Loading...
+  pureMessage: Message
+  pureNotify: Notify
+  pureTodo: Todo
+  pureNoMessage: No Message
+  pureNoNotify: No Notify
+  pureNoTodo: No Todo
+  pureUpdate1: The upload is successful
+  pureUpdate2: Upload failed
+login:
+  pureUsername: Username
+  purePassword: Password
+  pureVerifyCode: verification code
+  pureLogin: Login
+  pureLoginSuccess: Login Success
+  pureLoginFail: Login Fail
+  pureUsernameReg: Please enter username
+  purePassWordReg: Please enter password
+  purePassWordRuleReg: The password format should be any combination of 8-18 digits
+content:
+  siteName: Regional selection
+  selectType: Select Type
+  select: Select
+  userMess1: possessor
+  userMess2: telephone
+  userMess3: id card number
+  userMess4: address
+  inputMess: Please enter a keyword
+  housingCondition: Whether it is a permanent residence
+  lodgingType1: all
+  lodgingType2: Permanent residence
+  lodgingType3: Live infrequently
+  code: Two-dimensional code
+  codeType1: Export the QR code of card number
+  codeType2: Export two-dimensional code of monthly statistics
+  codeType3: Export the public number binding two-dimensional code
+  codeType4: Export all QR codes
+  codeType5: Do not derive
+  templateDownload: Template Download
+table:
+  fullname: fullname
+  tel: tel
+  topflag: topflag
+  areaInfo: areaInfo
+  address: address
+  ifresident: ifresident
+  puttime: puttime
+  operation: operation
+  check: check
+  amend: amend
+  delete: delete
+  topflag1: Super administrator
+  topflag2: Provincial administrator
+  topflag3: Municipal administrator
+  topflag4: District administrator
+  topflag5: Street warden
+  topflag6: Village manager
+  topflag7: Village manager
+  topflag8: villager
+  userName: User Name
+  townStreet: Town/street
+  subordinate: Subordinate village
+  name: name
+  addDate: Add data
+  puttime2: Collection date
+  address2: indicates the area name
+  collectName: indicates the collector
+  collectTel: Phone number of the collector
+  onDutyDays: days on duty
+  absentFromWorkDays: Absence days
+  collectNumber: number of collection times
+  collectHouseNumber: Number of households collected
+  collectFrequency: Number of collection times
+  trashWeight: indicates the weight of garbage
+  emptyBucketFrequency: indicates the number of empty buckets
+  unqualifiedFrequency: indicates the number of unqualified times
+  qualifiedFrequency: qualified number
+  standingType: status
+  classificationSituation: classification Situation
+  environmentalCredits: Environmental credits
+  garbageType: Garbage Type
+  realTimePicture: Real-time picture
+  integralDetail1: Natural village
+  integralDetail2: Changer
+  integralDetail3: Detailed address
+  integralDetail4: number of credits
+  userCredit: User credit
+  userCredit1: indicates the address
+  userCredit2: indicates the user name
+  userCredit3: indicates the identity information
+  userCredit4: points for remaining food waste
+  userCredit5: Remaining recyclable credits
+  pointExchange: Points redeemed
+  pointExchange1: indicates the type
+  pointExchange2: Number of conversions
+  pointExchange3: points
+  pointExchange4: The money changer
+  pointExchange5: indicates the address
+  pointExchange6: Redemption date
+  pointExchange7: Note
+  pointExchange8: details
+  regionTable: region table
+  regionTable1: indicates a region
+  regionTable2: Check-in points
+  regionTable3: Adds time
+  regionTable4: Indicates whether to enable it
+  ruleImage: HumanFaceImage
+  acceptableCondition1: Qualified
+  acceptableCondition2: Failed
+  acceptableCondition3: indicates an empty bucket
+  acceptableCondition4: Good
+  acceptableCondition5: Excellent
+  examine: examine
+  behavior: behavior
+  integralValue: Modified integral
+  type: type
+message:
+  success: load Success
+  error: error
+  downloadSucc: Download Success
+  updateErr: update Error
+  successfulOperation: Successful Operation
+  daochuError: Districts cannot be empty
+title: 
+  addUser: Add a user
+  viewMess: View information
+  editMess: edit information
+  msg1: Query provincial regions must exist!
+  totalWeight: Total weight
+  allNumber: total
+  unit: article
+  ViewIntegral: Query provincial regions must exist!
+  weight: weight
+  chartTitle: Receiving and shipping details
+  deliver: Delivery details TOP
+form:
+  contactPerson: Contact person
+  tel: Mobile phone number
+  telMsg: Please enter your phone number
+  yfCardNo: Kitchen waste card master card
+  yfCardNoSec: Kitchen waste card by card
+  jfCardNo: Points card Main card
+  jfCardNoSec: Points card subcard
+  qtCardNo: Other cards Main card
+  qtCardNoSec: Other cards subcard
+  sex: sex
+  sex1: male
+  sex2: female
+  pointTypes1: Reduce points
+  pointTypes2: Adds points
+  deleteMsg: After the user is deleted, the user's previous points will be cleared, as well as all data! Please be careful! Click OK to delete
+  uCode: Identification card
+  pwd: Password
+  rePwd: Repeated Password
+  company: Company/Enterprise Name
+  dangType1: Mass member
+  dangType2: Party member
+  dangType3: Cadre
+  dangType4: Collector
+  dangType: Identity type
+  ifresident: Whether a permanent resident
+  iscleaner: Cleaner
+  build: Building/Tower
+  unit: Unit
+  address: Address
+  userType: User type
+  userType1: Ordinary user
+  userType2: Property management
+  cadre: Neighborhood cadre
+  cadreTel: Neighborhood cadre's phone number
+  party: Neighborhood Party member
+  partyTel: Neighborhood Party member's phone number
+  officeName: Organization name
+  officeUserName: Organization leader
+  officeType: Organization type
+  officeType1: Resident
+  officeType2: Enterprise
+  officeType3: Organization
+  officeType4: Merchant
+  population: Population size
+  yes: Yes
+  no: No
+  cancel: cancel
+  affirm: affirm
+  selectDate: Select Date
+  cjytel: Collector telephone
+  cjyName: Collector's name
+  fjiaMess: Additional message
+  fjiaMess1: Number of days
+  fjiaMess2: weekly
+  fjiaMess3: month
+  fjiaMess4: Custom
+  reclamationType: Reclamation Type
+  reclamationType1: All reveal
+  reclamationType2: Kitchen waste
+  reclamationType3: Other garbage
+  own: own
+  IDhao: ID number
+  other: Other information
+  other1: Joint household cadre
+  other2: Joint household party member
+  image: picture
+  image1: Do not derive
+  image2: derive
+  pointType1: Online redemption
+  pointType2: Below the line deduction
+  pointType3: Points increase
+  pointType4: Exchange machine
+  pointType5: Sign in and get points
+  pointType6: Points are sent during inspection
+  pointType7: Toxic and harmful to send points
+  pointType8: Points can be recycled
+  pointType9: Collect and send points
+  pointType10: Return points
+  regionType1: indicates the village
+  regionType2: Town/street
+  regionType3: County/region
+  regionType4: District/natural village
+  identificationResult1: Collection date
+  identificationResult2: indicates the address
+  identificationResult3: Number of food waste collection times
+  identificationResult4: Identify the number of food waste
+  identificationResult5: Other collection times
+  identificationResult6: Identify other times
+  identificationResult7: Pass count
+  identificationResult8: Identify the pass count
+  identificationResult9: Failed count
+  identificationResult10: Identify the number of failures
+  identificationResult11: Number of empty buckets
+  identificationResult12: Identify the number of empty buckets
+  intelligentIdentification: intelligent Identification
+  isDiscern1: Not enabled
+  isDiscern2: Enable
+  productName: Product Name
+  conversionQuantity: Conversion Quantity
+  consumptionPoints: Consumption Points
+  submissionDate: Submission Date
+  orderStatus: Order Status
+  orderStatus1: not processed
+  orderStatus2: Shipped
+  orderStatus3: Completed
+  orderProcessing: Order processing
+  checkInScore: Check in score
+  checkInScore1: indicates the region name
+  checkInScore2: creation time
+  checkInScore3: Update time
+  checkInScore4: indicates whether it is enabled
+  checkInScore4-i: enabled
+  checkInScore4-ni: disabled
+  tips: tips
+  tip1: Do you want to turn off the current region check-in function?
+  time: time
+tag:
+  telType1: Metal
+  telType2: waste paper
+  telType3: Plastics
+  telType4: Textiles
+  telType5: Glass class
+  telType6: Collect aggregate overview
+  telType7: The proportion of statistics collected today
