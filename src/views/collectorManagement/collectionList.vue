@@ -312,19 +312,19 @@ function getDateTime() {
 
 function getMess() {
   let timeDate1 = timeDate.value[0];
-  let timeDate2 = timeDate.value[0];
+  let timeDate2 = timeDate.value[1];
   const form = siteMess.value.getSite();
   let startTime = null;
   let endTime = null;
   if (!timeDate1) {
     startTime = getDateTime();
   } else {
-    msToDate(timeDate1).withoutTime;
+    startTime = msToDate(timeDate1).withoutTime;
   }
   if (!timeDate2) {
     endTime = getDateTime();
   } else {
-    msToDate(timeDate2).withoutTime;
+    endTime = msToDate(timeDate2).withoutTime;
   }
   const data = {
     // 当前页
@@ -359,19 +359,19 @@ function getMess() {
 
 function getUserList() {
   let timeDate1 = timeDate.value[0];
-  let timeDate2 = timeDate.value[0];
+  let timeDate2 = timeDate.value[1];
   const form = siteMess.value.getSite();
   let startTime = null;
   let endTime = null;
   if (!timeDate1) {
     startTime = getDateTime();
   } else {
-    msToDate(timeDate1).withoutTime;
+    startTime = msToDate(timeDate1).withoutTime;
   }
   if (!timeDate2) {
     endTime = getDateTime();
   } else {
-    msToDate(timeDate2).withoutTime;
+    endTime = msToDate(timeDate2).withoutTime;
   }
   const data = {
     // 当前页
@@ -422,19 +422,19 @@ function handleExamine(data) {}
 
 function exportData() {
   let timeDate1 = timeDate.value[0];
-  let timeDate2 = timeDate.value[0];
+  let timeDate2 = timeDate.value[1];
   const form = siteMess.value.getSite();
   let startTime = null;
   let endTime = null;
   if (!timeDate1) {
     startTime = getDateTime();
   } else {
-    msToDate(timeDate1).withoutTime;
+    startTime = msToDate(timeDate1).withoutTime;
   }
   if (!timeDate2) {
     endTime = getDateTime();
   } else {
-    msToDate(timeDate2).withoutTime;
+    endTime = msToDate(timeDate2).withoutTime;
   }
   if (!form.areaId) {
     message(t("message.daochuError"), { type: "error" });

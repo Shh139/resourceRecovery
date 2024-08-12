@@ -156,12 +156,7 @@ import forms, { type FormProps } from "@/views/components/dialog/form.vue";
 import vewMess from "@/views/components/dialog/viewMess.vue";
 import redactMess from "@/views/components/dialog/redact.vue";
 import { cloneDeep, debounce } from "@pureadmin/utils";
-import {
-  addDialog,
-  closeDialog,
-  updateDialog,
-  closeAllDialog
-} from "@/components/ReDialog";
+import { addDialog } from "@/components/ReDialog";
 const { t } = useI18n();
 const columns: Column<any>[] = [
   {

@@ -28,12 +28,22 @@ export default {
       }
     },
     {
-      path: "/userlist/userProfile",
-      name: "UserProfile",
-      component: () => import("@/views/userProfile/index.vue"),
+      path: "/userlist/corporationList",
+      name: "CorporationList",
+      component: () => import("@/views/userlist/corporationList.vue"),
       meta: {
-        title: $t("menus.userProfile"),
+        title: $t("menus.corporation"),
         showParent: true
+      }
+    },
+    {
+      path: "/userlist/collectorBinding",
+      name: "CollectorBinding",
+      component: () => import("@/views/userlist/collectorBinding.vue"),
+      meta: {
+        title: $t("menus.collectorList"),
+        showLink: false,
+        activePath: "query"
       }
     }
   ]

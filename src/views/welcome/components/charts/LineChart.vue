@@ -1,17 +1,22 @@
 <script setup lang="ts">
-import { type PropType, ref, computed } from "vue";
+import { type PropType, ref, computed, watch, onMounted } from "vue";
 import { useDark, useECharts } from "@pureadmin/utils";
 import { useI18n } from "vue-i18n";
 const { t } = useI18n();
 
 const props = defineProps({
-  data: {
-    type: Array as PropType<Array<Array<number>>>,
-    default: () => []
-  },
-  color: {
+  /** 时间 */
+  timeList: {
     type: Array as PropType<Array<string>>,
     default: () => []
+  },
+  seriesList: {
+    type: Array as PropType<Array<object>>,
+    default: () => []
+  },
+  heightView: {
+    type: Number,
+    default: 240
   }
 });
 
@@ -24,82 +29,60 @@ const { setOptions } = useECharts(chartRef, {
   theme
 });
 
-setOptions({
-  container: ".detail",
-  legend: {
-    type: "plain",
-    show: true
-  },
-  xAxis: {
-    type: "category",
-    data: ["07/18", "07/19", "07/20", "07/21", "07/22", "07/23", "07/24"],
-    axisLabel: {
-      fontSize: "0.875rem"
+function updateChart() {
+  setOptions({
+    container: ".detail",
+    legend: {
+      type: "plain",
+      show: true
     },
-    axisPointer: {
-      type: "shadow"
-    }
-  },
-  grid: {
-    left: "10%",
-    top: "10%",
-    bottom: "20px"
-  },
-  yAxis: {
-    show: true,
-    type: "value",
-    axisLabel: {
-      fontSize: "0.875rem"
+    xAxis: {
+      type: "category",
+      data: props.timeList,
+      axisLabel: {
+        fontSize: "0.71rem"
+      },
+      axisPointer: {
+        type: "shadow"
+      },
+      boundaryGap: false
     },
-    splitLine: {
-      show: false // 去网格线
-    }
-  },
-  series: [
-    {
-      name: t("tag.telType1"),
-      data: props.data[0],
-      type: "line",
-      symbol: "none",
-      smooth: true,
-      color: props.color[0]
+    grid: {
+      left: "5%",
+      right: "5%",
+      top: "15%",
+      bottom: "20px"
     },
-    {
-      name: t("tag.telType2"),
-      data: props.data[1],
-      type: "line",
-      symbol: "none",
-      smooth: true,
-      color: props.color[1]
+    yAxis: {
+      show: true,
+      type: "value",
+      axisLabel: {
+        fontSize: "0.71rem"
+      },
+      splitLine: {
+        show: false // 去网格线
+      }
     },
-    {
-      name: t("tag.telType3"),
-      data: props.data[2],
-      type: "line",
-      symbol: "none",
-      smooth: true,
-      color: props.color[2]
-    },
-    {
-      name: t("tag.telType4"),
-      data: props.data[3],
-      type: "line",
-      symbol: "none",
-      smooth: true,
-      color: props.color[3]
-    },
-    {
-      name: t("tag.telType5"),
-      data: props.data[4],
-      type: "line",
-      symbol: "none",
-      smooth: true,
-      color: props.color[4]
-    }
-  ]
+    series: props.seriesList
+  });
+}
+
+onMounted(() => {
+  updateChart();
 });
+
+watch(
+  () => props.timeList,
+  newData => {
+    updateChart();
+  },
+  { deep: true }
+);
 </script>
 
 <template>
-  <div ref="chartRef" style="width: 100%; height: 240px" />
+  <div
+    ref="chartRef"
+    :style="{ width: '100%', height: props.heightView + 'px' }"
+  />
 </template>

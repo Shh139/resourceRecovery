@@ -38,7 +38,7 @@
         </el-form-item>
       </el-col>
       <el-col :span="5">
-        <el-button type="primary" :icon="Search" @click="getUserList">{{
+        <el-button type="primary" :icon="Search" @click="getData">{{
           t("buttons.pureSearch")
         }}</el-button>
       </el-col>
@@ -75,7 +75,7 @@ import siteForm from "@/components/siteForm/index.vue";
 import { ref, reactive, onMounted, nextTick, h, createVNode } from "vue";
 import { useI18n } from "vue-i18n";
 import type { Column } from "element-plus";
-import { pointDetailList } from "@/api/points";
+import { pointDetailList, updatePointStatus } from "@/api/points";
 import { message } from "@/utils/message";
 import { ElButton } from "element-plus";
 import handleView from "@/views/components/dialog/handle.vue";
@@ -206,21 +206,21 @@ function getDateTime() {
 }
 
 /** 获取数据 */
-function getUserList() {
+function getData() {
   let timeDate1 = timeDate.value[0];
-  let timeDate2 = timeDate.value[0];
+  let timeDate2 = timeDate.value[1];
   const form = siteMess.value.getSite();
   let startTime = null;
   let endTime = null;
   if (!timeDate1) {
     startTime = getDateTime();
   } else {
-    msToDate(timeDate1).withoutTime;
+    startTime = msToDate(timeDate1).withoutTime;
   }
   if (!timeDate2) {
     endTime = getDateTime();
   } else {
-    msToDate(timeDate2).withoutTime;
+    endTime = msToDate(timeDate2).withoutTime;
   }
   const data = {
     // 当前页
@@ -252,7 +252,7 @@ function getUserList() {
 
 onMounted(() => {
   nextTick(() => {
-    getUserList();
+    getData();
   });
 });
 
@@ -262,7 +262,7 @@ function changeFun(currentPage: number, pageSize: number) {
     pageNum: currentPage,
     pageSize: pageSize
   };
-  getUserList();
+  getData();
 }
 const formThreeInline = ref({
   classname: "",
@@ -281,9 +281,11 @@ function handleViewiew(data) {
     consumptionPoints: data.rowData.point,
     puttime: data.rowData.puttime,
     exchangecount: "",
-    status: 1
+    status: 1,
+    id: data.rowData.id
   };
   const resetFormThreeInline = cloneDeep(obj);
+  console.log(resetFormThreeInline);
   formThreeInline.value = obj;
   addDialog({
     title: "可拖拽",
@@ -296,32 +298,27 @@ function handleViewiew(data) {
         formInline: obj
       }),
     closeCallBack: ({ options, args }) => {
-      const form = siteMess.value.getSite();
-      // if (args?.command === "cancel") {
-      //   // 您点击了取消按钮
-      //   // 重置表单数据
-      //   formThreeInline.value = cloneDeep(resetFormThreeInline);
-      // } else if (args?.command === "sure") {
-      //   updateUserInfo({
-      //     ...formThreeInline,
-      //     provinceid: form.provinceId,
-      //     cityid: form.cityId,
-      //     areaid: form.areaId,
-      //     streetid: form.streetId,
-      //     estateid: form.estateId,
-      //     villageid: form.villageId
-      //   }).then(res => {
-      //     console.log(res);
-      //     if ((res as { status: number }).status !== 10001000) {
-      //       message(`${(res as { msg: string }).msg}`);
-      //     }
-      //     // 重置表单数据
-      //     formThreeInline.value = cloneDeep(resetFormThreeInline);
-      //   });
-      // } else {
-      //   // 重置表单数据
-      //   formThreeInline.value = cloneDeep(resetFormThreeInline);
-      // }
+      if (args?.command === "cancel") {
+        // 您点击了取消按钮
+        // 重置表单数据
+        formThreeInline.value = cloneDeep(resetFormThreeInline);
+      } else if (args?.command === "sure") {
+        let data = formThreeInline.value;
+        updatePointStatus({
+          ...data
+        }).then(res => {
+          console.log(res);
+          if ((res as { status: number }).status !== 10001000) {
+            message(`${(res as { msg: string }).msg}`);
+          }
+          // 重置表单数据
+          formThreeInline.value = cloneDeep(resetFormThreeInline);
+          getData();
+        });
+      } else {
+        // 重置表单数据
+        formThreeInline.value = cloneDeep(resetFormThreeInline);
+      }
     }
   });
 }

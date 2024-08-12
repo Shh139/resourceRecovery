@@ -29,6 +29,7 @@ buttons:
   uploadFile: Upload File
   outService: Out of service
   editMess: EDITOR
+  changePassword: change password
 search:
   pureTotal: Total
   pureHistory: History
@@ -36,6 +37,10 @@ search:
   pureDragSort: （Drag Sort）
   pureEmpty: Empty
   purePlaceholder: Search Menu
+  totalDays: Total Days
+  clockingIn: Sign-in Days
+  absenceFromDuty: lack Days
+  days: Days
 panel:
   pureSystemSet: System Configs
   pureCloseSystemSet: Close System Configs
@@ -88,6 +93,7 @@ menus:
   usermessage: userinfo
   bulkImport: bulk import user
   userProfile: bulk amend user
+  noCollectList: no Collect List
   collectorManagement: Collector Management
   collectorEmployeeManagement: Collector Employee Management
   attendanceList: Attendance List
@@ -106,6 +112,15 @@ menus:
   faceRecognitionRegistrationList: Face recognition registration list
   recognitionResultList: Recognition result list
   captureRecognitionList: Capture recognition list
+  corporation: corporation Message manage
+  collectorList: collector List
+  resourceOperation1: Resource operation
+  reclamationType: Recycle type management
+  recallOrder: Recall order
+  recycleBin: Site management
+  equipmentMenus: Equipment management
+  systemManagement: System management
+  addressManagement: Address management
 status:
   pureLoad: Loading...
   pureMessage: Message
@@ -139,6 +154,9 @@ content:
   lodgingType1: all
   lodgingType2: Permanent residence
   lodgingType3: Live infrequently
+  examine1: await examine
+  examine2: pass
+  examine3: Not go
   code: Two-dimensional code
   codeType1: Export the QR code of card number
   codeType2: Export two-dimensional code of monthly statistics
@@ -146,11 +164,15 @@ content:
   codeType4: Export all QR codes
   codeType5: Do not derive
   templateDownload: Template Download
+  site1: Refuse disposal station
+  site2: Transfer station
+  site3: incinerator
+  houseNumber: house Number
 table:
   fullname: fullname
   tel: tel
   topflag: topflag
-  areaInfo: areaInfo
+  areaInfo: region
   address: address
   ifresident: ifresident
   puttime: puttime
@@ -170,10 +192,15 @@ table:
   townStreet: Town/street
   subordinate: Subordinate village
   name: name
+  name3: Name of recycle bin
   addDate: Add data
   puttime2: Collection date
+  time1: Office hours
+  time2: Time off work
+  duration: duration
   address2: indicates the area name
-  collectName: indicates the collector
+  collectName: Collection officer
+  collectName2: Collection officer Name
   collectTel: Phone number of the collector
   onDutyDays: days on duty
   absentFromWorkDays: Absence days
@@ -202,7 +229,7 @@ table:
   pointExchange: Points redeemed
   pointExchange1: indicates the type
   pointExchange2: Number of conversions
-  pointExchange3: points
+  pointExchange3: integral
   pointExchange4: The money changer
   pointExchange5: indicates the address
   pointExchange6: Redemption date
@@ -223,6 +250,41 @@ table:
   behavior: behavior
   integralValue: Modified integral
   type: type
+  collectorBindingList: Collector Binding List
+  deviceBindingList: Device Binding List
+  userBindingList: User Binding List
+  price: price
+  shopName: Shop name
+  orderForGoods1: Order number
+  orderForGoods2: name
+  orderForGoods3: tel
+  orderForGoods4: type
+  orderForGoods5: Add people
+  orderForGoods6: weight
+  orderForGoods7: points
+  orderForGoods8: income
+  orderForGoods9: examine status
+  orderForGoods10: picture
+  orderForGoods11: Collection date
+  longitude: longitude
+  latitude: latitude
+  description: Description
+  recycleName: recycle site name
+  equipmentTable1: Machine type
+  equipmentTable2: Order number
+  equipmentTable3: mac address
+  equipmentTable4: Address
+  equipmentTable5: Name of the collector
+  equipmentTable6: Location Update time
+  equipmentTable7: License plate number
+  superiorDistrict: superior District
+  districtName: district name
+  status: status
+  recyclePeople: recycle people
+  user: user
+  ranking: ranking
+  community: community
+  driver: driver
 message:
   success: load Success
   error: error
@@ -242,6 +304,22 @@ title:
   weight: weight
   chartTitle: Receiving and shipping details
   deliver: Delivery details TOP
+  addMess: Add information
+  fwjunk: Food waste junk information
+  qtlj: Other garbage Message
+  doufType1: Display rate trend graph
+  doufType2: Accuracy trend graph
+  integralRanking: integral ranking
+  recoveryInformation1: Total participation
+  recoveryInformation2: permanent residence
+  recoveryInformation3: food waste participation
+  recoveryInformation4: Other recycling participation
+  kitchenWaste: kitchen Waste
+  kitchenWaste2: Participation rate
+  kitchenWaste3: accuracy
+  othergarbage: other garbage(kg)
+  othergarbage2: Participation rate
+  othergarbage3: accuracy
 form:
   contactPerson: Contact person
   tel: Mobile phone number
@@ -258,6 +336,7 @@ form:
   pointTypes1: Reduce points
   pointTypes2: Adds points
   deleteMsg: After the user is deleted, the user's previous points will be cleared, as well as all data! Please be careful! Click OK to delete
+  deleteMsg2: Do you confirm deletion?
   uCode: Identification card
   pwd: Password
   rePwd: Repeated Password
@@ -273,7 +352,7 @@ form:
   unit: Unit
   address: Address
   userType: User type
-  userType1: Ordinary user
+  userType1: Ordinary userunit
   userType2: Property management
   cadre: Neighborhood cadre
   cadreTel: Neighborhood cadre's phone number
@@ -359,6 +438,26 @@ form:
   tips: tips
   tip1: Do you want to turn off the current region check-in function?
   time: time
+  itemName: item name
+  unitPrice: Unit price
+  unit2: units
+  units1: minutes /kg
+  units2: minutes/a
+  units3: yuan /kg
+  units4: minutes/Taiwan
+  units5: yuan/a
+  shop: shop
+  examineType: examine status
+  deviceType: Device Type
+  deviceStatus: Device Status
+  macSite: mac address
+  licensePlate: licensePlate
+  parentAddress: superiors region name
+  currentArea: Current area name
+  companyName: company name
+  originalPassword: original Password
+  newPassword: new password
+  confirmPassword: confirm password
 tag:
   telType1: Metal
   telType2: waste paper
@@ -367,3 +466,15 @@ tag:
   telType5: Glass class
   telType6: Collect aggregate overview
   telType7: The proportion of statistics collected today
+  telType8: electronic scale
+  telType9: self-service recycling box
+  telType10: self-service exchange machine
+  telType11: hand-held exchange machine
+  telType12: garbage bag dispenser
+  telType13: recycle scale
+  telType14: recycling box for renewable resources
+  telType15: Bluetooth electronic scale
+  telType16: Vehicle weighing system
+  deviceStatus1: Have expired
+  deviceStatus2: Not yet due
+  deviceStatus3: unactivated

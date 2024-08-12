@@ -244,6 +244,7 @@ const onLogin = async (formEl: FormInstance | undefined) => {
             });
           } else {
             message(t("login.pureLoginFail"), { type: "error" });
+            getCodeImage();
           }
         })
         .finally(() => (loading.value = false));

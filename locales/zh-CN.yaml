@@ -29,6 +29,7 @@ buttons:
   uploadFile: 上传文件
   outService: 停用
   editMess: 编辑
+  changePassword: 修改密码
 search:
   pureTotal: 共
   pureHistory: 搜索历史
@@ -36,6 +37,10 @@ search:
   pureDragSort: （可拖拽排序）
   pureEmpty: 暂无搜索结果
   purePlaceholder: 搜索菜单（支持拼音搜索）
+  totalDays: 总天数
+  clockingIn: 考勤天数
+  absenceFromDuty: 缺勤天数
+  days: 天
 panel:
   pureSystemSet: 系统配置
   pureCloseSystemSet: 关闭配置
@@ -92,6 +97,7 @@ menus:
   attendanceList: 考勤列表
   dataReport: 数据报表
   collectionList: 收集列表
+  noCollectList: 未收集列表
   pointManagement: 积分管理
   integralDetail: 积分明细汇总
   userIntegral: 用户积分查询
@@ -105,6 +111,15 @@ menus:
   faceRecognitionRegistrationList: 人脸识别注册列表
   recognitionResultList: 智能识别结果列表
   captureRecognitionList: 智能抓拍识别列表
+  corporation: 公司信息管理
+  collectorList: 采集员列表
+  resourceOperation1: 资源运营管理
+  reclamationType: 回收类型管理
+  recallOrder: 回收订单
+  recycleBin: 站点管理
+  equipmentMenus: 设备管理
+  systemManagement: 系统管理
+  addressManagement: 地址管理
 status:
   pureLoad: 加载中...
   pureMessage: 消息
@@ -138,6 +153,9 @@ content:
   lodgingType1: 全部
   lodgingType2: 常住
   lodgingType3: 不常住
+  examine1: 待审核
+  examine2: 审核通过
+  examine3: 审核不通过
   code: 二维码：
   codeType1: 导出卡号二维码
   codeType2: 导出月统计二维码
@@ -145,6 +163,10 @@ content:
   codeType4: 导出所有二维码
   codeType5: 不导出
   templateDownload: 模板下载
+  site1: 垃圾处理站
+  site2: 中转站
+  site3: 焚烧厂
+  houseNumber: 门牌号
 table:
   fullname: 真实姓名
   tel: 电话
@@ -169,10 +191,16 @@ table:
   townStreet: 所属街道
   subordinate: 所属村庄
   name: 姓名
+  name2: 名称
+  name3: 回收站名称
   addDate: 添加日期
   puttime2: 收集日期
   address2: 地区名称
   collectName: 收集员
+  collectName2: 收集员名称
+  time1: 上班时间
+  time2: 下班时间
+  duration: 时长
   collectTel: 收集员电话
   onDutyDays: 到岗天数
   absentFromWorkDays: 缺勤天数
@@ -227,6 +255,41 @@ table:
   examine: 审核
   integralValue: 修改积分
   type: 类型
+  collectorBindingList: 采集员绑定列表
+  deviceBindingList: 设备绑定列表
+  userBindingList: 用户绑定列表
+  price: 价格
+  shopName: 商铺名称
+  orderForGoods1: 订单号
+  orderForGoods2: 姓名
+  orderForGoods3: 电话
+  orderForGoods4: 分类
+  orderForGoods5: 添加人
+  orderForGoods6: 重量
+  orderForGoods7: 积分
+  orderForGoods8: 金额
+  orderForGoods9: 审核状态
+  orderForGoods10: 图片
+  orderForGoods11: 收集日期
+  longitude: 经度
+  latitude: 纬度
+  description: 描述
+  recycleName: 站点名称
+  equipmentTable1: 机器类型
+  equipmentTable2: 订单号
+  equipmentTable3: mac地址
+  equipmentTable4: 地址
+  equipmentTable5: 收集员姓名
+  equipmentTable6: 定位更新时间
+  equipmentTable7: 车牌号
+  superiorDistrict: 上级地区
+  districtName: 地区名称
+  status: 状态
+  recyclePeople: 回收人
+  user: 用户
+  ranking: 排名
+  community: 社区
+  driver: 司机
 message:
   success: 加载成功
   error: 加载失败
@@ -246,6 +309,22 @@ title:
   weight: 重量
   chartTitle: 近7日收运明细
   deliver: 投递明细TOP
+  addMess: 添加信息
+  fwjunk: 厨余垃圾信息
+  qtlj: 其他垃圾信息
+  doufType1: 投放率趋势图
+  doufType2: 正确率趋势图
+  integralRanking: 积分排名
+  recoveryInformation1: 总户数
+  recoveryInformation2: 常住户数
+  recoveryInformation3: 厨余参与户数
+  recoveryInformation4: 其他参与户数
+  kitchenWaste: 厨余垃圾重量
+  kitchenWaste2: 厨余垃圾实时参与率
+  kitchenWaste3: 厨余垃圾实时正确率
+  othergarbage: 其他垃圾重量(kg)
+  othergarbage2: 其他垃圾实时参与率
+  othergarbage3: 其他垃圾实时正确率
 form:
   contactPerson: 联系人
   tel: 手机号
@@ -262,6 +341,7 @@ form:
   pointTypes1: 减少积分
   pointTypes2: 增加积分
   deleteMsg: 用户删除后会清空用户以往的积分,以及一切数据!请慎重操作!点击确定,进行删除
+  deleteMsg2: 是否确认删除
   uCode: 身份证
   pwd: 密码
   rePwd: 重复密码
@@ -363,6 +443,26 @@ form:
   tips: 提示
   tip1: 是否确认关闭当前地区签到功能？
   time: 时间
+  itemName: 物品名称
+  unitPrice: 单价
+  unit2: 单位
+  units1: 分/kg
+  units2: 分/个
+  units3: 元/kg
+  units4: 分/台
+  units5: 元/
+  shop: 商铺
+  examineType: 审核状态
+  deviceType: 设备类型
+  deviceStatus: 设备状态
+  macSite: mac地址
+  licensePlate: 车牌号
+  parentAddress: 上级地区名称
+  currentArea: 当前地区
+  companyName: 公司名称
+  originalPassword: 原密码
+  newPassword: 新密码
+  confirmPassword: 确认密码
 tag:
   telType1: 金属类
   telType2: 废纸类
@@ -371,3 +471,15 @@ tag:
   telType5: 玻璃类
   telType6: 收集总量概况
   telType7: 今日收集统计占比
+  telType8: 电子秤
+  telType9: 自助回收箱
+  telType10: 自助兑换机
+  telType11: 手持兑换机
+  telType12: 垃圾发袋机
+  telType13: 物联网回收秤
+  telType14: 再生资源回收箱
+  telType15: 蓝牙电子秤
+  telType16: 车载称重系统
+  deviceStatus1: 已到期
+  deviceStatus2: 未到期
+  deviceStatus3: 未激活

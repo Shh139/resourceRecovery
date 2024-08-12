@@ -1,7 +1,6 @@
 <!-- 签到积分管理 -->
 <script setup lang="ts">
 import { ref, defineProps } from "vue";
-import siteForm from "@/components/siteForm/index.vue";
 import { useI18n } from "vue-i18n";
 const { t } = useI18n();
 

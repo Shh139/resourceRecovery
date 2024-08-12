@@ -19,29 +19,20 @@ export default {
       }
     },
     {
-      path: "/collectorManagement/employee",
-      name: "AttendanceList",
-      component: () => import("@/views/collectorManagement/employee.vue"),
-      meta: {
-        title: $t("menus.attendanceList"),
-        showParent: true
-      }
-    },
-    {
-      path: "/collectorManagement/dataReport",
-      name: "DataReport",
-      component: () => import("@/views/collectorManagement/dataReport.vue"),
-      meta: {
-        title: $t("menus.dataReport"),
-        showParent: true
-      }
-    },
-    {
       path: "/collectorManagement/collectionList",
       name: "CollectionList",
       component: () => import("@/views/collectorManagement/collectionList.vue"),
       meta: {
         title: $t("menus.collectionList"),
+        showParent: true
+      }
+    },
+    {
+      path: "/collectorManagement/noCollectList",
+      name: "NoCollectList",
+      component: () => import("@/views/collectorManagement/noCollectList.vue"),
+      meta: {
+        title: $t("menus.noCollectList"),
         showParent: true
       }
     }

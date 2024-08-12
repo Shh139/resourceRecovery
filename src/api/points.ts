@@ -24,3 +24,9 @@ export const signPoint = (data: object) => {
   var quer = qs.stringify(data);
   return http.request("post", "/api/signPoint/list?" + quer);
 };
+
+/** 订单处理 */
+export const updatePointStatus = data => {
+  var quer = qs.stringify(data);
+  return http.request("post", "/api/pointDetail/updatePointStatus?" + quer);
+};

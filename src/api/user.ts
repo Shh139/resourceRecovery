@@ -34,6 +34,52 @@ export type RefreshTokenResult = {
   };
 };
 
+export type corporation = {
+  id: number;
+  createTime: string;
+  corporationName: string;
+};
+
+export type corBackForm = {
+  count: number;
+  data: corporation[];
+  msg: string;
+  status: number;
+  suns: string;
+};
+
+type operateSuccessfully = {
+  count: any;
+  data: any;
+  msg: string;
+  status: number;
+  suns: any;
+};
+
+type caijiUser = {
+  address: string;
+  city: string;
+  createTime: string;
+  estate: string;
+  fullName: string;
+  id: number;
+  province: string;
+  puttime: string;
+  street: string;
+  tel: string;
+  userBindQr: any;
+  userName: string;
+  village: string;
+};
+
+type corporationBindCaijiUser = {
+  count: any;
+  data: caijiUser[];
+  msg: string;
+  status: number;
+  suns: any;
+};
+
 /** 登录 */
 export const getLogin = (data?: object) => {
   // return http.request<UserResult>("post", "/login", { data });
@@ -117,4 +163,49 @@ export const importUserFace = (data: object) => {
 export const excelUpdateTemplate = (data: object) => {
   var quer = qs.stringify(data);
   return http.request("post", "/api/memberManage/excelUpdateTemplate?" + quer);
+};
+
+/** 获取公司列表信息 */
+export const getCorporationUserList = data => {
+  var quer = qs.stringify(data);
+  return http.request<corBackForm>(
+    "post",
+    "/api/residentInfo/getCorporationUserList?" + quer
+  );
+};
+
+/** 添加公司信息 */
+export const addCorporationUser = data => {
+  var quer = qs.stringify(data);
+  return http.request<operateSuccessfully>(
+    "post",
+    "/api/residentInfo/addCorporationUser?" + quer
+  );
+};
+
+/** 修改公司信息 */
+export const editCorporationUser = data => {
+  var quer = qs.stringify(data);
+  return http.request<operateSuccessfully>(
+    "post",
+    "/api/residentInfo/editCorporationUser?" + quer
+  );
+};
+
+/** 获取相关公司下绑定的采集员 */
+export const getCorporationBindCaijiUser = data => {
+  var quer = qs.stringify(data);
+  return http.request<corporationBindCaijiUser>(
+    "post",
+    "/api/residentInfo/getCorporationBindCaijiUser?" + quer
+  );
+};
+
+/** 解除公司与采集员的绑定 */
+export const delCorporationBind = data => {
+  var quer = qs.stringify(data);
+  return http.request<operateSuccessfully>(
+    "post",
+    "/api/residentInfo/delCorporationBind?" + quer
+  );
 };

@@ -7,6 +7,41 @@ export const staffList = (data: object) => {
   return http.request("post", "/api/collectionUser/collectionUserList?" + quer);
 };
 
+type dataFormat = {
+  id: number;
+  addUserId: string;
+  fullName: string;
+  tel: string;
+  village: string;
+};
+
+type returnFormat = {
+  count: number;
+  data: dataFormat[];
+  msg: string;
+  status: number;
+  suns: string;
+};
+
+type details = {
+  address: string;
+  collectHouseNumber: number;
+  collectName: string;
+  collectTel: string;
+  goToWorkTime: string;
+  offWorkTime: string;
+  operatingHours: string;
+  puttime: string;
+};
+
+type noCollectDetailsFormat = {
+  count: number;
+  data: details[];
+  msg: string;
+  status: number;
+  suns: string;
+};
+
 /** 获取收集员考勤列表 */
 export const checkList = (data: object) => {
   var quer = qs.stringify(data);
@@ -73,4 +108,22 @@ export const addCollectionUser = (data: object) => {
 export const exportCollectData = query => {
   var qy = qs.stringify(query);
   return http.request("get", "/api/collectionUser/addCollectionUser?" + qy);
+};
+
+/** 获取未收集地区列表 */
+export const collectionUserNoCheck = query => {
+  var qy = qs.stringify(query);
+  return http.request<returnFormat>(
+    "post",
+    "/api/collectionUserCheck/collectionUserNoCheck?" + qy
+  );
+};
+
+/** 获取未收集地区详情列表 */
+export const collectionUserCheckDetail = query => {
+  var qy = qs.stringify(query);
+  return http.request<noCollectDetailsFormat>(
+    "post",
+    "/api/collectionUserCheck/collectionUserCheckDetail?" + qy
+  );
 };

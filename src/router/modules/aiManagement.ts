@@ -6,18 +6,9 @@ export default {
   meta: {
     icon: "ep:cpu",
     title: $t("menus.aiRecognition"),
-    rank: 9
+    rank: 10
   },
   children: [
-    {
-      path: "/aiRecognition/faceRecognition",
-      name: "FaceRecognition",
-      component: () => import("@/views/aiRecognition/faceRecognition.vue"),
-      meta: {
-        title: $t("menus.faceRecognitionRegistrationList"),
-        showParent: true
-      }
-    },
     {
       path: "/aiRecognition/recognitionResultList",
       name: "RecognitionResultList",
@@ -25,16 +16,6 @@ export default {
         import("@/views/aiRecognition/recognitionResultList.vue"),
       meta: {
         title: $t("menus.recognitionResultList"),
-        showParent: true
-      }
-    },
-    {
-      path: "/aiRecognition/captureRecognitionList",
-      name: "CaptureRecognitionList",
-      component: () =>
-        import("@/views/aiRecognition/captureRecognitionList.vue"),
-      meta: {
-        title: $t("menus.captureRecognitionList"),
         showParent: true
       }
     }

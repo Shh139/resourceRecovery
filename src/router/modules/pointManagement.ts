@@ -34,16 +34,6 @@ export default {
         title: $t("menus.integralConversion"),
         showParent: true
       }
-    },
-    {
-      path: "/pointManagement/checkInPointsManagement",
-      name: "checkInPointsManagement",
-      component: () =>
-        import("@/views/pointManagement/checkInPointsManagement.vue"),
-      meta: {
-        title: $t("menus.checkInPointsManagement"),
-        showParent: true
-      }
     }
   ]
 };
