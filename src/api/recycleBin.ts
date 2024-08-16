@@ -34,3 +34,24 @@ export const getRubbishSiteList = data => {
     "/api/rubbishSite/getRubbishSiteList?" + quer
   );
 };
+
+/** 添加站点信息 */
+export const addRubbishSite = data => {
+  var quer = qs.stringify(data);
+  return http.request<recycleBinList>(
+    "post",
+    "/api/rubbishSite/addRubbishSite?" + quer
+  );
+};
+
+/** 删除相关站点 */
+export const delRubbishSite = data => {
+  var quer = qs.stringify(data);
+  return http.request("post", "/api/rubbishSite/delRubbishSite?" + quer);
+};
+
+/** 编辑站点信息 */
+export const updateRubbishSite = data => {
+  var quer = qs.stringify(data);
+  return http.request("post", "/api/rubbishSite/updateRubbishSite?" + quer);
+};

@@ -80,6 +80,59 @@ type corporationBindCaijiUser = {
   suns: any;
 };
 
+type companyEquipment = {
+  activce: any;
+  areaInfo: string;
+  areaid: 2001;
+  caijiUserName: any;
+  ceilingWeight: 0;
+  cityid: 361;
+  collectUserId: any;
+  companytype: any;
+  createtime: string;
+  emodel: any;
+  ename: string;
+  enumber: any;
+  equipType: 1;
+  equipmentNo: "";
+  equipmentid: 6537;
+  estateid: any;
+  etype: any;
+  expiretime: string;
+  fullname: string;
+  gpsCarId: 0;
+  gpsImei: any;
+  gpsSimCard: any;
+  id: 23;
+  ifUpdate: any;
+  lastActiveTime: any;
+  latitude: string;
+  licensePlateNumber: string;
+  longitude: string;
+  macaddress: string;
+  orderId: string;
+  produceNumEquip: any;
+  provinceid: any;
+  saleId: string;
+  streetid: number;
+  tel: string;
+  updatetime: string;
+  username: string;
+  videoSurveillanceEquipment: any;
+  villageid: number;
+  weighPortBaud: any;
+  weightCmdIntervalMilli: any;
+  weightStatus: any;
+};
+
+type companyEquipmentList = {
+  count: any;
+  data: companyEquipment[];
+  msg: string;
+  status: number;
+  suns: any;
+};
+
 /** 登录 */
 export const getLogin = (data?: object) => {
   // return http.request<UserResult>("post", "/login", { data });
@@ -207,5 +260,14 @@ export const delCorporationBind = data => {
   return http.request<operateSuccessfully>(
     "post",
     "/api/residentInfo/delCorporationBind?" + quer
+  );
+};
+
+/** 获取公司设备列表 */
+export const getCorporationBindEquip = data => {
+  var quer = qs.stringify(data);
+  return http.request<companyEquipmentList>(
+    "post",
+    "/api/residentInfo/getCorporationBindEquip?" + quer
   );
 };

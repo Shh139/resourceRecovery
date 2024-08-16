@@ -9,7 +9,7 @@
           }}</el-button>
         </el-col>
       </el-row>
-      <el-row style="height: 510px">
+      <el-row style="height: 500px">
         <el-auto-resizer>
           <template #default="{ height, width }">
             <el-table-v2
@@ -53,7 +53,7 @@ import forms from "./dialog/addCompany.vue";
 import { cloneDeep, debounce } from "@pureadmin/utils";
 import { addDialog } from "@/components/ReDialog";
 const { t } = useI18n();
-const { toDetail, router } = useDetail();
+let { toDetail, router } = useDetail();
 const columns: Column<any>[] = [
   {
     dataKey: "corporationName",
@@ -91,33 +91,21 @@ const columns: Column<any>[] = [
             onClick: () => collectorBinding(data)
           },
           { default: () => t("table.collectorBindingList") }
+        ),
+        h(
+          ElButton,
+          {
+            type: "primary",
+            size: "small",
+            onClick: () => deviceBinding(data)
+          },
+          { default: () => t("table.deviceBindingList") }
         )
       ]);
     }
   }
 ];
 const dataTab = ref([]);
-const siteMess = ref(null);
-
-//待添加
-// h(
-//           ElButton,
-//           {
-//             type: "primary",
-//             size: "small",
-//             onClick: () => deviceBinding(data)
-//           },
-//           { default: () => t("table.deviceBindingList") }
-//         ),
-//         h(
-//           ElButton,
-//           {
-//             type: "primary",
-//             size: "small",
-//             onClick: () => userBinding(data)
-//           },
-//           { default: () => t("table.userBindingList") }
-//         )
 
 defineOptions({
   // name 作为一种规范最好必须写上并且和路由的name保持一致
@@ -151,7 +139,6 @@ function getData() {
     pageNum: table.pageNum,
     pageSize: table.pageSize // 每页显示数
   };
-  console.log(qrcodeType.value);
   getCorporationUserList(data).then(res => {
     if (res.status === 10001000) {
       dataTab.value = res.data;
@@ -250,15 +237,13 @@ function handleEdit(data) {
 
 /** 采集员绑定 */
 function collectorBinding(data) {
-  console.log(data.rowData);
-  toDetail(data.rowData);
+  toDetail(data.rowData, 0);
 }
 
 /** 设备绑定列表 */
-function deviceBinding(data) {}
-
-/** 用户绑定 */
-function userBinding(data) {}
+function deviceBinding(data) {
+  toDetail(data.rowData, 1);
+}
 </script>
 
 <style lang="scss" scoped>

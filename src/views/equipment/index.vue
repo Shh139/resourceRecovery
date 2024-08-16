@@ -32,9 +32,9 @@
               filterable
             >
               <el-option :value="0" :label="t('content.lodgingType1')" />
-              <el-option :value="1" :label="t('tag.telType8')" />
-              <el-option :value="2" :label="t('tag.telType9')" />
-              <el-option :value="3" :label="t('tag.telType10')" />
+              <el-option :value="1" :label="t('tag.deviceStatus1')" />
+              <el-option :value="2" :label="t('tag.deviceStatus2')" />
+              <el-option :value="3" :label="t('tag.deviceStatus3')" />
             </el-select>
           </el-form-item>
         </el-col>

@@ -358,6 +358,7 @@ var [timeList, rightRate, partyRate, dataLisp, dataLisp2, pointRankList] = [
 var timing = ref(null);
 onMounted(() => {
   nextTick(() => {
+    clearInterval(timing.value);
     deliverList();
     timing.value = setInterval(() => {
       getStatisOfEveryDay({ rubbishType: 0 }).then(res => {

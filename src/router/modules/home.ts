@@ -29,6 +29,24 @@ export default {
         title: $t("menus.resourceOperation"),
         showLink: true
       }
+    },
+    {
+      path: "/RedAndBlackList",
+      name: "RedAndBlackList",
+      component: () => import("@/views/welcome/redAndBlackList.vue"),
+      meta: {
+        title: $t("menus.redAndBlackList"),
+        showLink: true
+      }
+    },
+    {
+      path: "/map",
+      name: "mapView",
+      component: () => import("@/views/welcome/map.vue"),
+      meta: {
+        title: $t("menus.deviceReleaseMap"),
+        showLink: true
+      }
     }
   ]
 } satisfies RouteConfigsTable;

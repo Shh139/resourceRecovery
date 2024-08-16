@@ -241,6 +241,8 @@ const form = reactive({
   villageId: ""
 });
 
+const transmitIS = ref(false);
+
 var provinceList = ref([]);
 var cityList = ref([]);
 var areaList = ref([]);
@@ -270,6 +272,7 @@ onMounted(() => {
   nextTick(async () => {
     patternIs.value = props.pattern;
     if (props.defaultIs) {
+      transmitIS.value = false;
       await init();
     } else {
       // 有默认值
@@ -306,11 +309,13 @@ function provinceChange(newValue: number) {
     return;
   }
   // this.$emit("refresh");
-  form.cityId = "";
-  form.areaId = "";
-  form.streetId = "";
-  form.estateId = "";
-  form.villageId = "";
+  if (!transmitIS.value) {
+    form.cityId = "";
+    form.areaId = "";
+    form.streetId = "";
+    form.estateId = "";
+    form.villageId = "";
+  }
   cityList.value = [];
   areaList.value = [];
   streetList.value = [];
@@ -322,10 +327,12 @@ function provinceChange(newValue: number) {
     } else {
       const data = (res as { status: number; msg: string; data: any }).data;
       cityList.value = data;
-      if (props.defaultIs) {
-        form.cityId = data.length === 1 ? data[0].id : "";
-      } else {
-        form.cityId = props.defaultData.cityId;
+      if (!transmitIS.value) {
+        if (props.defaultIs) {
+          form.cityId = data.length === 1 ? data[0].id : "";
+        } else {
+          form.cityId = props.defaultData.cityId;
+        }
       }
       if (form.provinceId) {
         updateArea(form.cityId);
@@ -339,9 +346,12 @@ function updateArea(newValue) {
   if (!newValue) {
     return;
   }
-  form.streetId = "";
-  form.estateId = "";
-  form.villageId = "";
+  if (!transmitIS.value) {
+    form.streetId = "";
+    form.estateId = "";
+    form.villageId = "";
+  }
+
   streetList.value = [];
   estateList.value = [];
   villageList.value = [];
@@ -351,11 +361,14 @@ function updateArea(newValue) {
     } else {
       const data = (res as { status: number; msg: string; data: any }).data;
       areaList.value = data;
-      if (props.defaultIs) {
-        form.areaId = data.length === 1 ? data[0].id : "";
-      } else {
-        form.areaId = props.defaultData.areaId;
+      if (!transmitIS.value) {
+        if (props.defaultIs) {
+          form.areaId = data.length === 1 ? data[0].id : "";
+        } else {
+          form.areaId = props.defaultData.areaId;
+        }
       }
+
       if (form.provinceId) {
         updateStreet(form.areaId);
       }
@@ -369,9 +382,12 @@ function updateStreet(newValue) {
   if (!newValue) {
     return;
   }
-  form.streetId = "";
-  form.estateId = "";
-  form.villageId = "";
+  if (!transmitIS.value) {
+    form.streetId = "";
+    form.estateId = "";
+    form.villageId = "";
+  }
+
   streetList.value = [];
   estateList.value = [];
   villageList.value = [];
@@ -381,11 +397,14 @@ function updateStreet(newValue) {
     } else {
       const data = (res as { status: number; msg: string; data: any }).data;
       streetList.value = data;
-      if (props.defaultIs) {
-        form.streetId = data.length === 1 ? data[0].id : "";
-      } else {
-        form.streetId = props.defaultData.streetId;
+      if (!transmitIS.value) {
+        if (props.defaultIs) {
+          form.streetId = data.length === 1 ? data[0].id : "";
+        } else {
+          form.streetId = props.defaultData.streetId;
+        }
       }
+
       if (form.provinceId) {
         updateVillageList(form.streetId);
       }
@@ -398,7 +417,9 @@ function updateEstateList(newValue) {
     return;
   }
   // this.$emit("refresh");
-  form.estateId = "";
+  if (!transmitIS.value) {
+    form.estateId = "";
+  }
   estateList.value = [];
   getcity(newValue).then(res => {
     if ((res as { status: number }).status !== 10001000) {
@@ -406,10 +427,12 @@ function updateEstateList(newValue) {
     } else {
       const data = (res as { status: number; msg: string; data: any }).data;
       estateList.value = data;
-      if (props.defaultIs) {
-        form.estateId = data.length === 1 ? data[0].id : "";
-      } else {
-        form.estateId = props.defaultData.estateId;
+      if (!transmitIS.value) {
+        if (props.defaultIs) {
+          form.estateId = data.length === 1 ? data[0].id : "";
+        } else {
+          form.estateId = props.defaultData.estateId;
+        }
       }
       // if (form.provinceId) {
       //   updateEstateList(form.estateId);
@@ -423,8 +446,10 @@ function updateVillageList(newValue) {
   if (!newValue || newValue === 0) {
     return;
   }
-  form.estateId = "";
-  form.villageId = "";
+  if (!transmitIS.value) {
+    form.estateId = "";
+    form.villageId = "";
+  }
   villageList.value = [];
   estateList.value = [];
 
@@ -434,13 +459,15 @@ function updateVillageList(newValue) {
     } else {
       const data = (res as { status: number; msg: string; data: any }).data;
       villageList.value = data;
-      form.villageId = data.length === 1 ? data[0].id : "";
-      if (props.defaultIs) {
+      if (!transmitIS.value) {
         form.villageId = data.length === 1 ? data[0].id : "";
-      } else {
-        form.villageId = props.defaultData.villageId;
-        updateEstateList(form.villageId);
+        if (props.defaultIs) {
+          form.villageId = data.length === 1 ? data[0].id : "";
+        } else {
+          form.villageId = props.defaultData.villageId;
+        }
       }
+      updateEstateList(form.villageId);
       // if (form.provinceId) {
       //   updateEstateList(form.estateId);
       // }
@@ -452,7 +479,20 @@ function updateVillageList(newValue) {
 function getSite() {
   return form;
 }
-defineExpose({ getSite });
+/** 设置地址 */
+function setSite(eve) {
+  Object.assign(form, eve);
+  console.log(form.cityId);
+  nextTick(() => {
+    setTimeout(() => {
+      if (form.provinceId) {
+        transmitIS.value = true;
+        provinceChange(Number(form.provinceId));
+      }
+    }, 1000);
+  });
+}
+defineExpose({ getSite, setSite });
 </script>
 
 <style lang="scss" scoped>

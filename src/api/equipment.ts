@@ -54,11 +54,51 @@ type equipmentList = {
   suns: any;
 };
 
+type inodeBit = {
+  allPointPositions: any;
+  caijiUserName: any;
+  countTong: any;
+  dateTime: any;
+  equipType: 2;
+  hasPointPositions: any;
+  id: number;
+  lat: string;
+  licensePlateNumber: string;
+  lng: string;
+  macaddress: string;
+  rateOfCompletion: any;
+  status: string;
+  updatetime: string;
+  weight: number;
+};
+
+type inodeBitmap = {
+  count: number;
+  data: inodeBit[];
+  msg: string;
+  status: number;
+  suns: any;
+};
+
 export const equipList = data => {
   var quer = qs.stringify(data);
   return http.request<equipmentList>(
     "post",
     "/api/equipment/equipList?" + quer,
+    data,
+    {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
+      }
+    }
+  );
+};
+
+export const getEquipment = data => {
+  var quer = qs.stringify(data);
+  return http.request<inodeBitmap>(
+    "post",
+    "/api/equipment/getEquipment?" + quer,
     data,
     {
       headers: {

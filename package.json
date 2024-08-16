@@ -73,6 +73,7 @@
     "vue-router": "^4.4.0",
     "vue-tippy": "^6.4.4",
     "vue-types": "^5.1.2",
+    "vue3-baidu-map-gl": "^2.4.0",
     "vue3-seamless-scroll": "^2.0.1"
   },
   "devDependencies": {

@@ -13,9 +13,9 @@ const props = defineProps({
     type: Array as PropType<Array<string>>,
     default: () => []
   },
-  isViews: {
-    type: Boolean,
-    default: true
+  css: {
+    type: String,
+    default: "#41b6ff"
   }
 });
 
@@ -34,7 +34,7 @@ watch(
     await nextTick(); // 确保DOM更新完成后再执行
     setOptions({
       container: ".aggregateProfile",
-      color: ["#41b6ff", "#e85f33"],
+      color: ["#3cc5a3"],
       tooltip: {
         trigger: "axis",
         axisPointer: {
@@ -43,7 +43,8 @@ watch(
       },
       grid: {
         top: "20px",
-        left: "50px",
+        left: "42px",
+        bottom: "18px",
         right: 0
       },
       legend: {
@@ -60,7 +61,7 @@ watch(
           type: "category",
           data: props.timeData,
           axisLabel: {
-            fontSize: "0.875rem"
+            fontSize: "0.8rem"
           },
           axisPointer: {
             type: "shadow"
@@ -71,7 +72,7 @@ watch(
         {
           type: "value",
           axisLabel: {
-            fontSize: "0.875rem"
+            fontSize: "0.8rem"
           },
           splitLine: {
             show: false // 去网格线
@@ -85,7 +86,7 @@ watch(
           type: "bar",
           barWidth: 10,
           itemStyle: {
-            color: "#41b6ff",
+            color: props.css,
             borderRadius: [10, 10, 0, 0]
           },
           data: props.requireData
@@ -101,6 +102,5 @@ watch(
 </script>
 
 <template>
-  <div v-if="props.isViews" ref="chartRef" style="width: 100%; height: 365px" />
-  <div v-else ref="chartRef" style="width: 100%; height: 148px" />
+  <div ref="chartRef" style="width: 100%; height: 148px" />
 </template>

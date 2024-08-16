@@ -30,6 +30,7 @@ buttons:
   outService: Out of service
   editMess: EDITOR
   changePassword: change password
+  return: previous page
 search:
   pureTotal: Total
   pureHistory: History
@@ -121,6 +122,9 @@ menus:
   equipmentMenus: Equipment management
   systemManagement: System management
   addressManagement: Address management
+  companyEquipmentList: company Equipment List
+  redAndBlackList: Red and blackList
+  deviceReleaseMap: Device release map
 status:
   pureLoad: Loading...
   pureMessage: Message
@@ -320,6 +324,16 @@ title:
   othergarbage: other garbage(kg)
   othergarbage2: Participation rate
   othergarbage3: accuracy
+  participateIn: participate in households
+  headcount: headcount
+  residentPopulation: resident Population
+  foodWasteDisposal: Food waste disposal
+  otherPlacement: Other placement
+  recentDeliveryRate: Recent delivery rate
+  grossDeliveryWeight: gross delivery weight
+  recentAccuracyRate: Recent accuracy rate
+  dailyGrossWeight: Total food waste weight of the day(T)
+  otherGrossWeight: Other total weight of the day
 form:
   contactPerson: Contact person
   tel: Mobile phone number
@@ -458,6 +472,7 @@ form:
   originalPassword: original Password
   newPassword: new password
   confirmPassword: confirm password
+  equipment: equipment
 tag:
   telType1: Metal
   telType2: waste paper

@@ -8,29 +8,49 @@ const theme = computed(() => (isDark.value ? "dark" : "light"));
 
 const chartRef = ref();
 const { setOptions } = useECharts(chartRef, {
-  theme,
-  renderer: "svg"
+  theme
 });
 
 setOptions({
-  container: ".line-card",
+  legend: {
+    show: false
+  },
+  xAxis: [
+    {
+      show: false
+    }
+  ],
+  yAxis: [
+    // 横向 进度条 顶部数字
+    {
+      axisLine: {
+        show: false
+      },
+      axisLabel: {
+        show: false, // 隐藏
+        color: "#ffffff",
+        fontSize: "16"
+      },
+      data: ["5"]
+    }
+  ],
+  // 圆形进度条 标题
   title: {
-    text: "100%",
-    left: "47%",
-    top: "30%",
-    textAlign: "center",
+    text: 50 + "%",
+    left: "16%",
+    top: "29%",
+    itemGap: 0,
     textStyle: {
-      fontSize: "16",
+      color: "#000",
+      fontSize: "20",
       fontWeight: 600
     }
   },
-  polar: {
-    radius: ["100%", "90%"],
-    center: ["50%", "50%"]
-  },
   angleAxis: {
     max: 100,
-    show: false
+    // 隐藏刻度线
+    show: false,
+    startAngle: 90
   },
   radiusAxis: {
     type: "category",
@@ -45,19 +65,42 @@ setOptions({
       show: false
     }
   },
+  polar: {
+    // radius: '120%', //图形大小
+    radius: ["50%", "60%"], // 大小
+    center: ["30%", "40%"] // 位置
+  },
   series: [
     {
       type: "bar",
-      roundCap: true,
-      barWidth: 2,
+      data: [50],
       showBackground: true,
+      roundCap: true,
+      // 圆环 进度条背景颜色
       backgroundStyle: {
-        color: "#dfe7ef"
+        color: "rgb(213,217,219,0.4)"
       },
-      data: [100],
       coordinateSystem: "polar",
-      color: "#7846e5",
+      barWidth: 20,
       itemStyle: {
+        color: {
+          type: "linear",
+          x: 0,
+          y: 0,
+          x2: 0,
+          y2: 1,
+          colorStops: [
+            {
+              offset: 0,
+              color: "#bc7bf8" // 渐变起始颜色
+            },
+            {
+              offset: 1,
+              color: "#bc7bf8" // 渐变结束颜色
+            }
+          ],
+          global: false
+        },
         shadowBlur: 2,
         shadowColor: "#7846e5",
         shadowOffsetX: 0,
@@ -67,7 +110,6 @@ setOptions({
   ]
 });
 </script>
-
 <template>
-  <div ref="chartRef" style="width: 100%; height: 60px" />
+  <div ref="chartRef" style="width: 100%; height: 120px" />
 </template>

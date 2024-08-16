@@ -68,11 +68,17 @@ import { h, ref, reactive, onMounted, nextTick, createVNode } from "vue";
 import { useI18n } from "vue-i18n";
 import { ElButton } from "element-plus";
 import type { Column } from "element-plus";
-import { getRubbishSiteList } from "@/api/recycleBin";
+import {
+  getRubbishSiteList,
+  addRubbishSite,
+  delRubbishSite,
+  updateRubbishSite
+} from "@/api/recycleBin";
 import { message } from "@/utils/message";
 import { cloneDeep } from "@pureadmin/utils";
 import { addDialog } from "@/components/ReDialog";
 import addView from "./dialog/addView.vue";
+import editView from "./dialog/editView.vue";
 const { t } = useI18n();
 
 const dataTab = ref([]);
@@ -228,7 +234,7 @@ const formThreeInline = ref({
 });
 const resetFormThreeInline = cloneDeep(formThreeInline.value);
 
-/** 添加回收类型 */
+/** 添加站点 */
 function handleAdd() {
   addDialog({
     title: "可拖拽",
@@ -242,18 +248,18 @@ function handleAdd() {
       }),
     closeCallBack: ({ options, args }) => {
       let mess = formThreeInline.value;
-      console.log(mess);
       if (args?.command === "cancel") {
         formThreeInline.value = cloneDeep(resetFormThreeInline);
       } else if (args?.command === "sure") {
-        // addHuiPrd2(mess).then(res => {
-        //   if ((res as { status: number }).status !== 10001000) {
-        //     message(`${(res as { msg: string }).msg}`);
-        //   }
-        //   getUserList();
-        //   // 重置表单数据
-        //   formThreeInline.value = cloneDeep(resetFormThreeInline);
-        // });
+        console.log(mess);
+        addRubbishSite(mess).then(res => {
+          if (res.status === 10001000) {
+            message(`${(res as { msg: string }).msg}`);
+            getData();
+          }
+          // 重置表单数据
+          formThreeInline.value = cloneDeep(resetFormThreeInline);
+        });
       } else {
         // 重置表单数据
         formThreeInline.value = cloneDeep(resetFormThreeInline);
@@ -262,74 +268,66 @@ function handleAdd() {
   });
 }
 
-/** 用户编辑 redactMess */
+/** 站点编辑 redactMess */
 function handleEdit(data) {
-  // const resetFormThreeInline = cloneDeep(data.rowData);
-  // const formThreeInline = data.rowData;
-  // formThreeInline.iconImgSrc = data.rowData.iconImg;
-  // addDialog({
-  //   title: "可拖拽",
-  //   height: "500px",
-  //   draggable: false,
-  //   headerRenderer: ({ close, titleId, titleClass }) =>
-  //     h("div", t("title.editMess")),
-  //   contentRenderer: () =>
-  //     createVNode(editReclamationType, {
-  //       formInline: data.rowData
-  //     }),
-  //   closeCallBack: ({ options, args }) => {
-  //     if (args?.command === "cancel") {
-  //       // 您点击了取消按钮
-  //       // 重置表单数据
-  //       formThreeInline.value = cloneDeep(resetFormThreeInline);
-  //     } else if (args?.command === "sure") {
-  //       updateHuiPrdYC({
-  //         recyType: 1,
-  //         id: formThreeInline.id,
-  //         title: formThreeInline.title,
-  //         price: formThreeInline.price,
-  //         units: formThreeInline.units,
-  //         iconImg: formThreeInline.iconImgSrc,
-  //         fullname: formThreeInline.fullname
-  //       }).then(res => {
-  //         console.log(res);
-  //         if ((res as { status: number }).status !== 10001000) {
-  //           message(`${(res as { msg: string }).msg}`);
-  //         }
-  //         getUserList();
-  //         // 重置表单数据
-  //         formThreeInline.value = cloneDeep(resetFormThreeInline);
-  //       });
-  //     } else {
-  //       // 重置表单数据
-  //       formThreeInline.value = cloneDeep(resetFormThreeInline);
-  //     }
-  //   }
-  // });
+  const resetFormThreeInline = cloneDeep(data.rowData);
+  const formThreeInline = data.rowData;
+  formThreeInline.iconImgSrc = data.rowData.iconImg;
+  addDialog({
+    title: "可拖拽",
+    height: "500px",
+    draggable: false,
+    headerRenderer: ({ close, titleId, titleClass }) =>
+      h("div", t("title.editMess")),
+    contentRenderer: () =>
+      createVNode(editView, {
+        formInline: formThreeInline
+      }),
+    closeCallBack: ({ options, args }) => {
+      if (args?.command === "cancel") {
+        // 您点击了取消按钮
+        // 重置表单数据
+        formThreeInline.value = cloneDeep(resetFormThreeInline);
+      } else if (args?.command === "sure") {
+        console.log(formThreeInline);
+        updateRubbishSite(formThreeInline).then(res => {
+          if ((res as { status: number }).status !== 10001000) {
+            message(`${(res as { msg: string }).msg}`);
+          }
+          getData();
+          // 重置表单数据
+          formThreeInline.value = cloneDeep(resetFormThreeInline);
+        });
+      } else {
+        // 重置表单数据
+        formThreeInline.value = cloneDeep(resetFormThreeInline);
+      }
+    }
+  });
 }
 
-/** 用户删除 */
+/** 站点删除 */
 function handleDelete(data) {
   console.log(data);
-  // addDialog({
-  //   width: "20%",
-  //   height: "20px",
-  //   title: t("form.tips"),
-  //   popconfirm: { title: t("form.tips") },
-  //   contentRenderer: () => h("p", t("form.deleteMsg2")),
-  //   closeCallBack: ({ options, args }) => {
-  //     if (args?.command === "sure") {
-  //       delHuiPrdYC({ id: data.rowData.id }).then(res => {
-  //         if ((res as { status: number }).status !== 10001000) {
-  //           message(`${(res as { msg: string }).msg}`);
-  //           getData();
-  //         } else {
-  //           message(`${(res as { msg: string }).msg}`);
-  //         }
-  //       });
-  //     }
-  //   }
-  // });
+  addDialog({
+    width: "20%",
+    height: "20px",
+    title: t("form.tips"),
+    popconfirm: { title: t("form.tips") },
+    contentRenderer: () => h("p", t("form.deleteMsg2")),
+    closeCallBack: ({ options, args }) => {
+      if (args?.command === "sure") {
+        delRubbishSite({ id: data.rowData.id }).then(res => {
+          if ((res as { status: number }).status !== 10001000) {
+            // message(`${(res as { msg: string }).msg}`);
+            getData();
+          } else {
+            message(`${(res as { msg: string }).msg}`);
+          }
+        });
+      }
+    }
+  });
 }
 </script>
 

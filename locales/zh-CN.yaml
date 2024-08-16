@@ -30,6 +30,7 @@ buttons:
   outService: 停用
   editMess: 编辑
   changePassword: 修改密码
+  return: 返回
 search:
   pureTotal: 共
   pureHistory: 搜索历史
@@ -120,6 +121,9 @@ menus:
   equipmentMenus: 设备管理
   systemManagement: 系统管理
   addressManagement: 地址管理
+  companyEquipmentList: 公司设备列表
+  redAndBlackList: 红黑榜数据
+  deviceReleaseMap: 设备发布地图
 status:
   pureLoad: 加载中...
   pureMessage: 消息
@@ -325,6 +329,16 @@ title:
   othergarbage: 其他垃圾重量(kg)
   othergarbage2: 其他垃圾实时参与率
   othergarbage3: 其他垃圾实时正确率
+  participateIn: 参与投放户数
+  headcount: 总人数
+  residentPopulation: 常驻人数
+  foodWasteDisposal: 厨余投放人数
+  otherPlacement: 其他投放人数
+  recentDeliveryRate: 近日投放率
+  grossDeliveryWeight: 投放总重量
+  recentAccuracyRate: 近日正确率
+  dailyGrossWeight: 当日厨余垃圾总重量(T)
+  otherGrossWeight: 当日其他垃圾总重量(T)
 form:
   contactPerson: 联系人
   tel: 手机号
@@ -463,6 +477,7 @@ form:
   originalPassword: 原密码
   newPassword: 新密码
   confirmPassword: 确认密码
+  equipment: 设备
 tag:
   telType1: 金属类
   telType2: 废纸类

@@ -1,10 +1,39 @@
-<!-- 采集员绑定列表 -->
+<!-- 公司绑定设备列表 -->
 <template>
   <el-form size="default">
     <el-card shadow="never">
-      <h3>{{ getParameter.corporationName }}</h3>
+      <h3>{{ t("menus.companyEquipmentList") }}</h3>
       <site-form ref="siteMess" />
       <el-row>
+        <el-col :span="5">
+          <el-form-item :label="t('form.deviceType')">
+            <el-select
+              v-model="equipType"
+              :placeholder="t('content.select')"
+              filterable
+            >
+              <el-option :value="0" :label="t('content.lodgingType1')" />
+              <el-option :value="1" :label="t('tag.telType8')" />
+              <el-option :value="2" :label="t('tag.telType9')" />
+              <el-option :value="3" :label="t('tag.telType10')" />
+              <el-option :value="4" :label="t('tag.telType11')" />
+              <el-option :value="5" :label="t('tag.telType12')" />
+              <el-option :value="6" :label="t('tag.telType13')" />
+              <el-option :value="7" :label="t('tag.telType14')" />
+              <el-option :value="8" :label="t('tag.telType15')" />
+              <el-option :value="9" :label="t('tag.telType16')" />
+            </el-select>
+          </el-form-item>
+        </el-col>
+        <el-col :span="5">
+          <el-form-item :label="t('form.macSite')">
+            <el-input
+              v-model="macaddress"
+              style="width: 100%"
+              :placeholder="t('form.macSite')"
+            />
+          </el-form-item>
+        </el-col>
         <el-col :span="5">
           <el-button type="primary" :icon="Search" @click="getData">{{
             t("buttons.pureSearch")
@@ -14,7 +43,7 @@
           }}</el-button>
         </el-col>
       </el-row>
-      <el-row style="height: 450px">
+      <el-row style="height: 390px">
         <el-auto-resizer>
           <template #default="{ height, width }">
             <el-table-v2
@@ -49,53 +78,60 @@ import { useI18n } from "vue-i18n";
 import { ElButton } from "element-plus";
 import type { Column } from "element-plus";
 import { useDetail } from "./hooks";
-import { getCorporationBindCaijiUser, delCorporationBind } from "@/api/user";
+import { delCorporationBind, getCorporationBindEquip } from "@/api/user";
 import { message } from "@/utils/message";
 import { addDialog } from "@/components/ReDialog";
 import { useRouter } from "vue-router";
 const router = useRouter();
 const { t } = useI18n();
 defineOptions({
-  name: "CollectorBinding"
+  name: "EquipmentList"
 });
 const { initToDetail, getParameter } = useDetail();
 initToDetail();
 const columns: Column<any>[] = [
   {
-    dataKey: "userName",
-    key: "userName",
-    title: t("table.userName"),
+    dataKey: "equipType",
+    key: "equipType",
+    title: t("table.pointExchange1"),
+    width: 100,
+    cellRenderer: ({ cellData: equipType }) => h("div", getEquipType(equipType))
+  },
+  {
+    dataKey: "macaddress",
+    key: "macaddress",
+    title: t("table.equipmentTable3"),
     width: 200
   },
   {
-    dataKey: "fullName",
-    key: "fullName",
-    title: t("table.driver"),
-    width: 200
-  },
-  {
-    dataKey: "street",
-    key: "street",
+    dataKey: "areaInfo",
+    key: "areaInfo",
     title: t("table.areaInfo"),
+    width: 180
+  },
+  {
+    dataKey: "fullname",
+    key: "fullname",
+    title: t("table.collectName"),
+    width: 150
+  },
+  {
+    dataKey: "licensePlateNumber",
+    key: "licensePlateNumber",
+    title: t("table.equipmentTable7"),
     width: 200
   },
   {
-    dataKey: "village",
-    key: "village",
-    title: t("table.address"),
-    width: 200
-  },
-  {
-    dataKey: "puttime",
-    key: "puttime",
-    title: t("table.addDate"),
+    dataKey: "updatetime",
+    key: "updatetime",
+    title: t("table.puttime"),
     width: 200
   },
   {
     dataKey: "operation",
     key: "operation",
     title: t("table.operation"),
-    width: 500,
+    width: 100,
     cellRenderer: data => {
       return h("div", null, [
         h(
@@ -113,8 +149,9 @@ const columns: Column<any>[] = [
 ];
 const dataTab = ref([]);
 const siteMess = ref(null);
+const equipType = ref(0);
 
-var qrcodeType = ref(0);
+var macaddress = ref("");
 var count = ref(0);
 var table = reactive({
   pageNum: 1,
@@ -127,16 +164,46 @@ onMounted(() => {
   });
 });
 
-function previousPage() {
-  router.push({ name: "CorporationList" });
-}
-
 function changeFun(currentPage: number, pageSize: number) {
   table = {
     pageNum: currentPage,
     pageSize: pageSize
   };
   getData();
+}
+function getEquipType(eve) {
+  switch (eve) {
+    case 1:
+      return t("tag.telType8");
+      break;
+    case 2:
+      return t("tag.telType9");
+      break;
+    case 3:
+      return t("tag.telType10");
+      break;
+    case 3:
+      return t("tag.telType11");
+      break;
+    case 3:
+      return t("tag.telType12");
+      break;
+    case 3:
+      return t("tag.telType13");
+      break;
+    case 3:
+      return t("tag.telType14");
+      break;
+    case 3:
+      return t("tag.telType15");
+      break;
+    case 3:
+      return t("tag.telType16");
+      break;
+  }
+}
+function previousPage() {
+  router.push({ name: "CorporationList" });
 }
 
 function getData() {
@@ -151,9 +218,11 @@ function getData() {
     streetid: form.streetId, // 街道
     estateid: form.estateId, // 区
     villageid: form.villageId,
-    id: getParameter.id
+    id: getParameter.id,
+    equipType: equipType.value,
+    macaddress: macaddress.value
   };
-  getCorporationBindCaijiUser(data).then(res => {
+  getCorporationBindEquip(data).then(res => {
     if (res.status === 10001000) {
       dataTab.value = res.data;
       count.value = res.count;

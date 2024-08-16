@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { BMap, BZoom, BCityList, BMarker } from "vue3-baidu-map-gl";
 import siteForm from "@/components/siteForm/index.vue";
-import { ref, defineProps, reactive } from "vue";
+import { BMap, BZoom, BCityList, BMarker } from "vue3-baidu-map-gl";
+import { ref, defineProps, reactive, watch, nextTick } from "vue";
 import { useI18n } from "vue-i18n";
 const { t } = useI18n();
 
@@ -41,7 +41,12 @@ const props = withDefaults(defineProps<FormProps>(), {
 });
 
 const newFormInline = ref(props.formInline);
-const marKer = reactive({ lat: 39.915185, lng: 116.405901 });
+const marKer = reactive({
+  lat: Number(newFormInline.value.lat),
+  lng: Number(newFormInline.value.lng)
+});
+
+const siteMess = ref(null);
 
 const mapClick = res => {
   console.log(res);
@@ -50,6 +55,24 @@ const mapClick = res => {
   newFormInline.value.lng = marKer.lng.toString();
   newFormInline.value.lat = marKer.lng.toString();
 };
+
+watch(
+  () => props.formInline,
+  newData => {
+    console.log(newData);
+    nextTick(() => {
+      siteMess.value.setSite({
+        provinceId: newData.provinceId,
+        cityId: newData.cityId,
+        areaId: newData.areaId,
+        streetId: newData.streetId,
+        estateId: newData.estateId,
+        villageId: newData.villageId
+      });
+    });
+  },
+  { deep: true, immediate: true }
+);
 </script>
 
 <template>
@@ -120,6 +143,7 @@ const mapClick = res => {
         mapType="BMAP_NORMAL_MAP"
         :plugins="['TrackAnimation']"
         :enableScrollWheelZoom="true"
+        :center="marKer"
         @click="mapClick"
       >
         <BCityList />

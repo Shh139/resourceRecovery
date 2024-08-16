@@ -223,6 +223,7 @@ const seriesList = ref([]);
 const timing = ref(null);
 onMounted(() => {
   nextTick(() => {
+    clearInterval(timing.value);
     deliverList();
     collectionVolume();
     getMonthlyCollection();

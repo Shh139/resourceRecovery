@@ -45,6 +45,16 @@ export default {
         showLink: false,
         activePath: "query"
       }
+    },
+    {
+      path: "/userlist/equipmentList",
+      name: "EquipmentList",
+      component: () => import("@/views/userlist/equipmentList.vue"),
+      meta: {
+        title: $t("menus.companyEquipmentList"),
+        showLink: false,
+        activePath: "query"
+      }
     }
   ]
 } satisfies RouteConfigsTable;
