@@ -91,7 +91,7 @@
           />
         </el-card>
       </el-col>
-      <el-col :span="12">
+      <!-- <el-col :span="12">
         <el-card shadow="never">
           <p>{{ t("title.dailyGrossWeight") }}</p>
           <div class="round">
@@ -116,7 +116,7 @@
             </div>
           </div>
         </el-card>
-      </el-col>
+      </el-col> -->
     </el-row>
   </div>
 </template>
